@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Moview Review</title>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        {% if reviews %}
+            <div class="navbar navbar-dark bg-primary text-center ">
+                <div class="h2">{{ reviews[0].searchStr }} Reviews</div>
+                <small><stron>Note : </stron>In case of multiple shows this page will show only first 2 matching results. </small>
+            </div>
+        {% else %}
+            <div class="col-xs-12">Sorry no results found..</div>
+        {% endif %}
+    </div>
+    <div class="col-xs-12">
+        {% for review in reviews %}
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      {{ review.result_title }}
+                    </div>
+                    <div class="panel-body">
+                        {% if review.reviews %}
+                            {% for rev in review.reviews %}
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="h3">{{ rev.title }}</div>
+                                        <div class="text-right">{{rev.rating}} / 10</div>
+                                    </div>
+                                    <div class="col-xs-12 small">{{rev.name}} | {{rev.review_date}}</div>
+                                    <div class="col-xs-12">
+                                        <p>{{rev.review}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                        <div class="col-xs-12 strong text-center">No reviews found.</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

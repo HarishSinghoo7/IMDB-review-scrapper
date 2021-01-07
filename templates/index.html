@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Movies Review Scrapper</title>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="navbar navbar-dark bg-primary">
+            <div class="text-center h2">IMDB Reviews Scrapper</div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    IMDB Movies or TV-Series Reviews Scrapper
+                </div>
+                <div class="panel-body">
+                    <form action="/reviews" method="post">
+                        <div class="form-group">
+                            <input type="text" name="searchStr" class="form-control" placeholder="Movie or TV-Series">
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
